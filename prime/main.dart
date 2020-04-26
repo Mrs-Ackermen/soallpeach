@@ -35,20 +35,26 @@ void main(List<String> args) {
 
   input.forEach((s){
     int number = int.parse(s);
-    if (number < range) {
-      if(primeList.contains(number))
-        print("1");
-      else 
-        print("0");
+    if (number == 2) {
+      print(1);
+    } else if (number % 2 == 0) {
+      print(0);
     } else {
-        int x = 1; 
-        int y = sqrt(number).toInt() + 1;
-        for (int z=5; z<y; z+=6)
-            if (number % z == 0 || number % (z+2) == 0) {
-                x = 0;
-                break;
-            }
-        print(x);
+      if (number < range) {
+        if(primeList.contains(number))
+          print(1);
+        else 
+          print(0);
+      } else {
+          int x = 1; 
+          int y = sqrt(number).toInt() + 1;
+          for (int z=5; z<y; z+=6)
+              if (number % z == 0 || number % (z+2) == 0) {
+                  x = 0;
+                  break;
+              }
+          print(x);
+      }
     }
   });
 }
