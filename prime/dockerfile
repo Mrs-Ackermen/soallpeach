@@ -1,0 +1,9 @@
+FROM antonmeep/dartaotruntime
+
+WORKDIR /app
+
+COPY main.aot .
+ADD . /appy
+
+CMD []
+ENTRYPOINT ["dartaotruntime", "main.aot"]
