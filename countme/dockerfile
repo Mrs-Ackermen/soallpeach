@@ -1,4 +1,4 @@
-FROM openjdk:8-jre-alpine
+FROM adoptopenjdk/openjdk11-openj9:jdk-11.0.1.13-alpine-slim
 
 # ENV APPLICATION_USER ktor
 # RUN adduser -D -g '' $APPLICATION_USER
