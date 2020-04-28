@@ -17,7 +17,6 @@ fun main(args: Array<String>): Unit {
             post("/") {
                 val receiveNum = call.receive<String>()
                 sumOfRequests += receiveNum.toInt()
-                call.respondText("$sumOfRequests")
             }
             get("/count") {
                 call.respondText("$sumOfRequests", ContentType.Text.Plain)
