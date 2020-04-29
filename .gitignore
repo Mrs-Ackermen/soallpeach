@@ -1,0 +1,10 @@
+countme/.gradle
+countme/.idea
+countme/out
+countme/build/*
+!countme/build/libs
+/spring
+*.iml
+*.ipr
+*.iws
+.DS_Store
