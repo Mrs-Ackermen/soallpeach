@@ -37,7 +37,7 @@ fun Application.mainModule() {
 }
 
 private suspend fun ApplicationCall.respondHandlingLongCalculation(receiveNum : String) {
-    jobs.add(GlobalScope.async(compute) {
+    jobs.add(CoroutineScope(compute).async {
         sumOfRequests += receiveNum.toInt()
     })
 }
