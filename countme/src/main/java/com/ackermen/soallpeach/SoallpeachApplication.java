@@ -1,5 +1,9 @@
 package com.ackermen.soallpeach;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,23 +11,35 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+
 @RestController
 @SpringBootApplication
 public class SoallpeachApplication {
 
-	private volatile int sum = 0;
+	private List<String> sum = Collections.synchronizedList(new ArrayList<>());
 
 	@GetMapping(value = "/count")
 	public int available() {
-		return sum;
+		int num = 0;
+		// System.out.println("GET COUNT: " + sum);
+		for (String s: sum) {
+			try {
+				Integer temp = Integer.valueOf(s);
+				num += temp;
+			} catch (Exception e) {
+				
+			}
+		}
+		return num;
 	}
 
 	@PostMapping(value = "/")
 	synchronized public void checkedOut(@RequestBody String input) {
+		// System.out.println("POST: " + input);
 		try {
-			sum += Integer.valueOf(input.subSequence(0, input.length()-1).toString());
+			sum.add(input);
 		} catch (Exception e) {
-			e.printStackTrace();
+
 		}
 	}
 
